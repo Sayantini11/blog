@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= link_to "Categories", categories_path %> | <%= link_to "Articles", articles_path %> |
+    <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %> 
+          <b>Welcome <%= current_user.email %></b>
+          <%= link_to "Account Setting", edit_user_registration_path %>
+    <% else %>
+          <%= link_to "Register", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+
+    <% end %>
+    <%= notice %>
+    <%= alert %>
+    <%= yield %>
+    </body>
+</html>

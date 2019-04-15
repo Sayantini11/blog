@@ -1,0 +1,10 @@
+
+<h3><%= @article.title %></h3>
+            <%= Category.find(@article.category_id).name %> <br/>
+			<%= @article.body %> <br/>
+			<%= @article.publish_date %>
+			<%= @article.is_published %>
+			<%= image_tag(@article.feature_image_url, size: "150*150") %> <br/>
+			<%= link_to "Edit",edit_article_path(@article.id) %>
+			<%= link_to "Delete",article_path(@article.id),method: :delete,data: {confirm: "Are you sure ?"} %>
+ 

@@ -1,0 +1,17 @@
+<h2>Article Details (<%= @article.count %>)</h2>
+	
+	<h3>	Title - Description  <br/> </h3>
+	
+	<% @article.each do |a| %>
+	
+		
+			<%= a.title %> - 
+			<%= a.body %> 
+			<%= link_to "view",article_path(a.id) %> <br/>
+		
+	
+	<% end %>
+
+<br><%= link_to "Add Article",new_article_path %>
+
+
