@@ -1,6 +1,7 @@
 <%= form_for @article do |a| %>
   
   <% if @article.errors.any? %>
+  <h3> These errors prohibited the form from being saved: </h3>
     
     <ul>
       <% @article.errors.full_messages.each do |msg| %>
@@ -28,6 +29,8 @@
 
   <label for="article_image_url">Image URL : </label><br>
   <%= a.text_field :feature_image_url %><br>
+
+  
 
 
   <%= a.submit %>

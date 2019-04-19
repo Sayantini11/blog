@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+	before_action :authenticate_user!, except: [:index, :show]
+    load_and_authorize_resource #invokes ability class
+	
 	def index
 		@article = Article.all
 	end
@@ -18,6 +21,7 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		@review = Review.new
 	end
 
 	def edit

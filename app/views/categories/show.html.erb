@@ -1,14 +1,16 @@
 <h2><%= @category.name %> </h2>
 <h3> <%= @category.description %> </h3>
+<h4> Listing Articles :- </h4>
 <p> <% @articles.each do |article| %>
-	 <%= article.title %> <br/>
-	
+	 <%= article.title %> <br/>	
 	<% end %>
-    
+
 </p>
 <p> 
-	<%= link_to "Edit", edit_category_path(@category.id) %>|
-	<%= link_to "Delete", category_path(@category.id), method: :delete,  data: {confirm: "Are you sure?"} %>
+	<% if (user_signed_in?) && (can? :update, @article) %>
+		<%= link_to "Edit", edit_category_path(@category.id) %>|
+		<%= link_to "Delete", category_path(@category.id), method: :delete,  data: {confirm: "Are you sure?"} %>
+	<% end %>
 </p>
 
 <br/><br/>
